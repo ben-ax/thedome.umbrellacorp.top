@@ -1,0 +1,13 @@
+# Site default page
+DirectoryIndex index.php index.html
+# Custom error pages
+# ErrorDocument 403 error_forbidden.html
+# ErrorDocument 404 error_notfound.html
+# Disable directory browsing
+Options -Indexes
+# protect .htaccess and .htpasswd
+<Files ~ "^.*\.([Hh][Tt])">
+Order allow,deny
+Deny from all
+Satisfy all
+</Files>
