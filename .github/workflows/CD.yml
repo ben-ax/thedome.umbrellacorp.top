@@ -1,0 +1,27 @@
+name: PHP CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  php-check:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        
+      - name: Check PHP syntax
+        run: find . -name "*.php" -print0 | xargs -0 -n1 php -l
+
+      - name: Deploy to production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd /var/www/www.umbrellacorp.top
+          git pull --ff-only origin main
