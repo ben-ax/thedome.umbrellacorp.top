@@ -95,7 +95,7 @@ $name = generateImageIndex($uploadDir);
 if (move_uploaded_file($tmp_name, "$uploadDir/$name.$ext")) {
     echo "Upload successful";
     createtumbnail($uploadDir,$name.".".$ext, 200, 200);
-    logactivity("Added image", $objectNumber, "Added image from virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
+    logactivity("Added image", $objectNumber, "Added image to virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
 } else {
     echo "Upload failed";
 }

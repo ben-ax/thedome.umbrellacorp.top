@@ -67,7 +67,7 @@ if($result = mysqli_query($conn, "SELECT objectNumber FROM ResearchObjects WHERE
 }
 else
 {
-  $employeecode = "Didn't find virus objectNumber";
+  $objectNumber = "Didn't find virus objectNumber";
 }
 
 

@@ -83,7 +83,7 @@ else
   }
   else
   {
-  $objectNumber = "Didn't find virus objectNumber";
+    $objectNumber = "Didn't find virus objectNumber";
   }
 
 
