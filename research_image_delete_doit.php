@@ -58,12 +58,29 @@ $returnpage = "research_read_object.php?id=".$id."";
    // die("Error: Not allowed to post from this page.");
 //}
 
+$id = $_GET["id"];
 $path = $_GET["path"];
+
+if($result = mysqli_query($conn, "SELECT objectNumber FROM ResearchObjects WHERE 
+                                  ID='$id'"))
+  {
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $objectNumber = $row["objectNumber"];
+
+    }
+  }
+  else
+  {
+    $objectNumber = "Didn't find virus objectNumber";
+  }
+
 
 if (file_exists($path))
 {
     unlink($path);
     echo "Successfully deleted image";
+    logactivity("Deleted image", $objectNumber, "Deleted image from virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
 }
 else
 {

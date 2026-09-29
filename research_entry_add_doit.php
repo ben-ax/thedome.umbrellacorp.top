@@ -71,12 +71,27 @@ else
   $entryDate = date("d.m.Y");
   $entryTime = date("H:i");
 
+  
+  if($result = mysqli_query($conn, "SELECT objectNumber FROM ResearchObjects WHERE 
+                                  ID='$objectId'"))
+  {
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $objectNumber = $row["objectNumber"];
+
+    }
+  }
+  else
+  {
+  $objectNumber = "Didn't find virus objectNumber";
+  }
+
 
 
   mysqli_query($conn,"INSERT INTO ResearchEntries (researchObjectId, entryHeading, entryText, entryWriter, entryDate, entryTime) values ('$objectId', '$entryHeadingInput', '$entryText', '$entryWriter', '$entryDate', '$entryTime')");
 
   echo "Successfully added entry";  
-    
+  logactivity("Added entry to virus", $objectNumber, "Added entry to virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
 }
 
 ?>

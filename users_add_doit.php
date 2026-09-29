@@ -62,7 +62,7 @@ $lockedOut = $_POST["addLockedOut"];
 
 
 mysqli_query($conn,"INSERT INTO users (employeeCode, passwd, emailaddress, lockout) values ('$customEmployeeCode', '$newPassword', '$emailAddress', '$lockedOut')");
-
+logactivity("Added User", $customEmployeeCode, "Added user with employeeCode ".$customEmployeeCode."", "User Database", $_SESSION["employeecode"]);
         
     
 

@@ -74,6 +74,7 @@ if($result = mysqli_query($conn, "SELECT id, passwd FROM users WHERE
       mysqli_query($conn,"UPDATE users SET passwd='$newPassword' WHERE id='".$id."'");
       
       echo "Success";
+      logactivity("Changed password", $_SESSION["employeecode"], "Changed password for ".$employeecode."", "Account Managment", $_SESSION["employeecode"]);
       // --- Return on success ---
       ?>
       <meta http-equiv="refresh" content="1;url=<?= $returnpage ?>" /

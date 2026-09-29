@@ -71,7 +71,7 @@ $signatureDate = date('d.m.Y');
 
 
 mysqli_query($conn,"INSERT INTO employees (employeeCode, name,dateOfBirth, sex, bloodType, height, weight, rank, securityAccessLevel, department, background, strengths, weaknesses, signatureDate) values ('$employeecode', '$name', '$dateofbirth', '$sex', '$bloodtype', '$height', '$weight', '$rank', '$securityaccesslevel', '$department', '$background', '$strengths', '$weaknesses', '$signatureDate')");
-
+logactivity("Added employee", $employeecode, "Added employee with code ".$employeecode."", "Personnel Registry", $_SESSION["employeecode"]); 
         
     
 

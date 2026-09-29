@@ -120,6 +120,7 @@ if($result = mysqli_query($conn, "SELECT id, emailaddress FROM users WHERE
       sendmail($emailaddress, "Password Reset", $newPassword);
       
       echo "Successfully reset your password. Check your email for your new password";
+      logactivity("Reset password", $_SESSION["employeecode"], "Reset password for ".$_SESSION["employeecode"]."", "Account Managment", $_SESSION["employeecode"]);
       // --- Return on success ---
       ?>
       <meta http-equiv="refresh" content="1;url=<?= $returnpage ?>" />

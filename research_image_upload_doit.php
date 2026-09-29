@@ -45,6 +45,22 @@ $returnpage = "research_read_object.php?id=".$objectId."";
     <div class="grid-main">
 
 <?php
+
+if($result = mysqli_query($conn, "SELECT objectNumber FROM ResearchObjects WHERE 
+                                  ID='$objectId'"))
+  {
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $objectNumber = $row["objectNumber"];
+
+    }
+  }
+  else
+  {
+    $objectNumber = "Didn't find virus objectNumber";
+  }
+
+
 $uploadDir = "/var/www/thedome.umbrellacorp.top/ResearchObjects";
 
 $idPrefix;
@@ -78,10 +94,12 @@ $name = generateImageIndex($uploadDir);
 
 if (move_uploaded_file($tmp_name, "$uploadDir/$name.$ext")) {
     echo "Upload successful";
+    createtumbnail($uploadDir,$name.".".$ext, 200, 200);
+    logactivity("Added image", $objectNumber, "Added image from virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
 } else {
     echo "Upload failed";
 }
-createtumbnail($uploadDir,$name.".".$ext, 200, 200);
+
 ?>
 <meta http-equiv="refresh" content="1;url=<?= $returnpage ?>">
 </div>
