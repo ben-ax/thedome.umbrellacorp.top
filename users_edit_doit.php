@@ -77,6 +77,7 @@ if($result = mysqli_query($conn, "SELECT id, employeeCode FROM users WHERE
     {
       mysqli_query($conn,"UPDATE users SET passwd='$newPassword', emailaddress='$emailAddress', lockout='$lockedOut' WHERE id='".$id."'");
       mysqli_query($conn,"UPDATE employees SET name='$name' WHERE employeeCode='".$employeeCode."'");
+      logactivity("Edited User", $employeeCode, "Edited user with employeeCode ".$employeeCode."", "User Database", $_SESSION["employeecode"]);
       
       echo "Success";
       // --- Return on success ---
@@ -87,6 +88,7 @@ if($result = mysqli_query($conn, "SELECT id, employeeCode FROM users WHERE
     else
     {
       mysqli_query($conn,"INSERT INTO users (employeeCode, passwd, emailaddress, lockout) values ('$customEmployeeCode', '$newPassword', '$emailAddress', '$lockedOut')");
+      logactivity("Added User", $customEmployeeCode, "Added user with employeeCode ".$customEmployeeCode."", "User Database", $_SESSION["employeecode"]);
     }
 
     ?>

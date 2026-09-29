@@ -55,9 +55,25 @@ $returnpage = "research_read.php";
 //}
 
 $id = $_GET["id"];
+
+if($result = mysqli_query($conn, "SELECT objectNumber FROM ResearchObjects WHERE 
+                                 ID='$id'"))
+{
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $objectNumber = $row["objectNumber"];
+
+    }
+}
+else
+{
+  $employeecode = "Didn't find virus objectNumber";
+}
+
+
 mysqli_query($conn,"DELETE FROM ResearchObjects WHERE id='".$id."'");
 echo "Succesfully deleted virus";
-logactivity("Delete Virus", $id, "Deleted Virus with id ".$id."", "Virus Database", $_SESSION["employeecode"]);
+logactivity("Deleted virus", $objectNumber, "Deleted virus with number ".$objectNumber."", "Virus Database", $_SESSION["employeecode"]);
 ?>
 <meta http-equiv="refresh" content="1;url=<?= $returnpage ?>" /
     </div>

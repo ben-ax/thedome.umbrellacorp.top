@@ -55,8 +55,26 @@ $returnpage = "personnelregistry_read.php";
 //}
 
 $id = $_GET["id"];
+
+if($result = mysqli_query($conn, "SELECT employeeCode FROM employees WHERE 
+                                 id='$id'"))
+{
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        $employeecode = $row["employeeCode"];
+
+    }
+}
+else
+{
+  $employeecode = "Didn't find employeeCode";
+}
+
+
 mysqli_query($conn,"DELETE FROM employees WHERE id='".$id."'");
-echo "Succesfully deleted employee"
+
+echo "Succesfully deleted employee";
+logactivity("Deleted employee", $employeecode, "Deleted employee with code ".$employeecode."", "Personnel Registry", $_SESSION["employeecode"]); 
 ?>
 <meta http-equiv="refresh" content="1;url=<?= $returnpage ?>" /
     </div>

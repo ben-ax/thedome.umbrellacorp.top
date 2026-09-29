@@ -85,7 +85,7 @@ $weaknesses = mysqli_real_escape_string($conn, $weaknesses);
 
 mysqli_query($conn,"UPDATE employees SET employeeCode='".$employeecode."',name='".$name."',dateOfBirth='".$dateofbirth."',height='".$height."',weight='".$weight."',bloodType='".$bloodtype."',sex='".$sex."',rank='".$rank."',department='".$department."',securityAccessLevel='".$securityaccesslevel."',background='".$background."',strengths='".$strengths."',weaknesses='".$weaknesses."' WHERE id=".$employeeid."");
 
-        
+logactivity("Edited employee", $employeecode, "Edited employee with code ".$employeecode."", "Personnel Registry", $_SESSION["employeecode"]); 
     
 
 
