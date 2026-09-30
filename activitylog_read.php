@@ -148,7 +148,7 @@
                 "<div class=\"table-header-cell-light\">Activity</div>\n".
                 "<div class=\"table-header-cell-light\">Employee</div>\n".
                 "<div class=\"table-header-cell-light\">Category</div>\n";
-            
+                
                 $htmlOutput .= "<div class=\"table-header-cell-light\">Delete</div>\n";
     
                 $htmlOutput .="</div>\n\n".
